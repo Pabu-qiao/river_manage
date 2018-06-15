@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rivermanage.mapper.base.WqWqmonitorBMapper">
+  <resultMap id="BaseResultMap" type="com.rivermanage.pojo.base.WqWqmonitorB">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="STCD" jdbcType="VARCHAR" property="stcd" />
+    <result column="DEVID" jdbcType="INTEGER" property="devid" />
+    <result column="PARID" jdbcType="INTEGER" property="parid" />
+    <result column="SPT" jdbcType="VARCHAR" property="spt" />
+    <result column="MTDA" jdbcType="DECIMAL" property="mtda" />
+    <result column="NT" jdbcType="VARCHAR" property="nt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, STCD, DEVID, PARID, SPT, MTDA, NT
+  </sql>
+  <select id="selectByExample" parameterType="com.rivermanage.pojo.base.WqWqmonitorBExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wq_wqmonitor_b
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wq_wqmonitor_b
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wq_wqmonitor_b
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.rivermanage.pojo.base.WqWqmonitorBExample">
+    delete from wq_wqmonitor_b
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.rivermanage.pojo.base.WqWqmonitorB">
+    insert into wq_wqmonitor_b (ID, STCD, DEVID, 
+      PARID, SPT, MTDA, NT
+      )
+    values (#{id,jdbcType=INTEGER}, #{stcd,jdbcType=VARCHAR}, #{devid,jdbcType=INTEGER}, 
+      #{parid,jdbcType=INTEGER}, #{spt,jdbcType=VARCHAR}, #{mtda,jdbcType=DECIMAL}, #{nt,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rivermanage.pojo.base.WqWqmonitorB">
+    insert into wq_wqmonitor_b
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="stcd != null">
+        STCD,
+      </if>
+      <if test="devid != null">
+        DEVID,
+      </if>
+      <if test="parid != null">
+        PARID,
+      </if>
+      <if test="spt != null">
+        SPT,
+      </if>
+      <if test="mtda != null">
+        MTDA,
+      </if>
+      <if test="nt != null">
+        NT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="stcd != null">
+        #{stcd,jdbcType=VARCHAR},
+      </if>
+      <if test="devid != null">
+        #{devid,jdbcType=INTEGER},
+      </if>
+      <if test="parid != null">
+        #{parid,jdbcType=INTEGER},
+      </if>
+      <if test="spt != null">
+        #{spt,jdbcType=VARCHAR},
+      </if>
+      <if test="mtda != null">
+        #{mtda,jdbcType=DECIMAL},
+      </if>
+      <if test="nt != null">
+        #{nt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.rivermanage.pojo.base.WqWqmonitorBExample" resultType="java.lang.Long">
+    select count(*) from wq_wqmonitor_b
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update wq_wqmonitor_b
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.stcd != null">
+        STCD = #{record.stcd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.devid != null">
+        DEVID = #{record.devid,jdbcType=INTEGER},
+      </if>
+      <if test="record.parid != null">
+        PARID = #{record.parid,jdbcType=INTEGER},
+      </if>
+      <if test="record.spt != null">
+        SPT = #{record.spt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mtda != null">
+        MTDA = #{record.mtda,jdbcType=DECIMAL},
+      </if>
+      <if test="record.nt != null">
+        NT = #{record.nt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update wq_wqmonitor_b
+    set ID = #{record.id,jdbcType=INTEGER},
+      STCD = #{record.stcd,jdbcType=VARCHAR},
+      DEVID = #{record.devid,jdbcType=INTEGER},
+      PARID = #{record.parid,jdbcType=INTEGER},
+      SPT = #{record.spt,jdbcType=VARCHAR},
+      MTDA = #{record.mtda,jdbcType=DECIMAL},
+      NT = #{record.nt,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rivermanage.pojo.base.WqWqmonitorB">
+    update wq_wqmonitor_b
+    <set>
+      <if test="stcd != null">
+        STCD = #{stcd,jdbcType=VARCHAR},
+      </if>
+      <if test="devid != null">
+        DEVID = #{devid,jdbcType=INTEGER},
+      </if>
+      <if test="parid != null">
+        PARID = #{parid,jdbcType=INTEGER},
+      </if>
+      <if test="spt != null">
+        SPT = #{spt,jdbcType=VARCHAR},
+      </if>
+      <if test="mtda != null">
+        MTDA = #{mtda,jdbcType=DECIMAL},
+      </if>
+      <if test="nt != null">
+        NT = #{nt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rivermanage.pojo.base.WqWqmonitorB">
+    update wq_wqmonitor_b
+    set STCD = #{stcd,jdbcType=VARCHAR},
+      DEVID = #{devid,jdbcType=INTEGER},
+      PARID = #{parid,jdbcType=INTEGER},
+      SPT = #{spt,jdbcType=VARCHAR},
+      MTDA = #{mtda,jdbcType=DECIMAL},
+      NT = #{nt,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

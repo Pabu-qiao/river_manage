@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,13 +23,11 @@
 				left: 20%;
 				width: 80%;
 			}
-			#layer ul{
+			#mapLayer{
 				display:none;
 			}
-			#layer ul.actived{
+			#mapLayer.actived{
 				display:inline-block;
-				position:absolute;
-				top:100px;
 			}
 		</style>
 	</head>
@@ -39,14 +36,12 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-2">
-					<!--<h1>12134</h1>-->
 					<div id="tree" class="treeview"></div>
 				</div>
 				<div id="container"></div>
-				<img id='switch' alt="图层选项卡开关" src="img/switch.png"
-						style="position: absolute; right: 40px; top: 20px"/>
 				<div id='layer' class="col-lg-2 col-lg-offset-10">
-				  	<ul id='mapLayer' class='' style="list-style-type:none;">
+					<span id='switch' class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="position: absolute; right: 40px; top: 20px;font-size:30px;"></span>
+				  	<ul id='mapLayer' class='' style="list-style-type:none;position:absolute;right:40px;top:20px;">
 						<li><img src='img/info.png'/><label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1">感叹号</label></li>
 						<li><img src='img/photo.png'/><label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox2" value="option2">照相机</label></li>
 						<li><img src='img/city.png'/><label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox3" value="option3">没写</label></li>
@@ -76,8 +71,14 @@
 				});
 	
 				//控图层选项卡显示与隐藏
-				$('#switch').on('click', function() {
-					$('#mapLayer').toggleClass('actived');
+				$('#layer').on('mouseover', function() {
+					
+					$('#switch').hide();
+					$('#mapLayer').addClass('actived');
+				});
+				$('#layer').on('mouseout', function() {
+					$('#mapLayer').removeClass('actived');
+					$('#switch').show();
 				});
 				
 	

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rivermanage.pojo.base.City;
+import com.rivermanage.pojo.base.WqWqmonitorB;
 import com.rivermanage.service.MyService;
 
 @Controller
@@ -49,6 +50,14 @@ public class PageController {
 		System.out.println(parentid);
 		return myservice.getNode(parentid);
 	}
+	
+	
+	@RequestMapping("/monitor")
+	@ResponseBody
+	public List<WqWqmonitorB> monitor(){
+		return myservice.getMonitor();
+	}
+	
 	
 	
 	@Test

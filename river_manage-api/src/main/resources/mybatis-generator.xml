@@ -11,9 +11,8 @@
 			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
-		<jdbcConnection driverClass="org.postgresql.Driver"
-			connectionURL="jdbc:postgresql://localhost:5432/water" userId="postgres"
-			password="root">
+		<!-- <jdbcConnection driverClass="org.postgresql.Driver" connectionURL="jdbc:postgresql://localhost:5432/water" userId="postgres" password="root"> -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.230:3306/centermanager" userId="root" password="root">
 		</jdbcConnection>
 		<!-- <jdbcConnection driverClass="oracle.jdbc.OracleDriver" connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:yycg" 
 			userId="yycg" password="yycg"> </jdbcConnection> -->
@@ -45,7 +44,8 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-		<table schema="" tableName="test"></table>
+		<!-- <table schema="" tableName="test"></table> -->
+		<table schema="" tableName="wq_wqmonitor_b"></table>
 		
 		
 
