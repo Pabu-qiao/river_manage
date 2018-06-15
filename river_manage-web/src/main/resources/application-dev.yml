@@ -1,0 +1,37 @@
+server:
+  port: 8181
+
+#mybatis:
+  #config-location: /mapper/*.xml
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/water?useUnicode=true&characterEncoding=utf-8
+    username: postgres
+    password: root
+ 
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    timeout: 1000
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+
+  freemarker:
+    check-template-location: true
+    content-type: text/html
+    charset: UTF-8
+    suffix: .ftl
+    
+    
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

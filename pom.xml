@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.weiqi</groupId>
+	<artifactId>river_manage</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+		<parent>
+		  	<groupId>org.springframework.boot</groupId>
+		  	<artifactId>spring-boot-starter-parent</artifactId>
+		  	<version>2.0.1.RELEASE</version>
+		</parent>
+		<modules>
+		  	<module>river_manage-api</module>
+		  	<module>river_manage-mapper</module>
+		  	<module>river_manage-service</module>
+		  	<module>river_manage-web</module>
+		</modules>
+  
+  	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<mysql.version>5.1.46</mysql.version>
+		<mybatis.version>1.3.2</mybatis.version>
+		<dbcp.version>1.4</dbcp.version>
+		<pagehelper.version>1.2.3</pagehelper.version>
+		<postgresql.version>42.2.2</postgresql.version>
+		<start-class>com.rivermanage.RiverManageApplication</start-class>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>${dbcp.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper-spring-boot-starter</artifactId>
+				<version>${pagehelper.version}</version>
+			</dependency>
+			<!-- <dependency>
+			     <groupId>org.springframework.boot</groupId>
+			     <artifactId>spring-boot-starter-web</artifactId>
+			</dependency> -->
+		</dependencies>
+	</dependencyManagement>
+  
+	<dependencies>
+		 <dependency>
+		     <groupId>org.springframework.boot</groupId>
+		     <artifactId>spring-boot-starter-test</artifactId>
+		 </dependency>
+	</dependencies>
+  
+  	<build>
+	  	<plugins>
+	  		<plugin>
+	  			<groupId>org.springframework.boot</groupId>
+	  			<artifactId>spring-boot-maven-plugin</artifactId>
+	  		</plugin>
+	  		<plugin>
+	  			<groupId>org.apache.maven.plugins</groupId>
+	  			<artifactId>maven-compiler-plugin</artifactId>
+	  			<configuration>
+	                	<source>${java.version}</source>
+	                	<target>${java.version}</target>
+	            </configuration>
+	  		</plugin>
+	  	</plugins>
+  	</build>
+</project>
